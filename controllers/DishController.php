@@ -69,7 +69,7 @@ class DishController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            $ingridients = Ingridient::find()->all();
+            $ingridients = Ingridient::find()->where(['status' => 1])->all();
             return $this->render('create', [
                 'model' => $model,
                 'ingridients' => $ingridients,
@@ -90,7 +90,7 @@ class DishController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            $ingridients = Ingridient::find()->all();
+            $ingridients = Ingridient::find()->where(['status' => 1])->all();
             return $this->render('update', [
                 'model' => $model,
                 'ingridients' => $ingridients,
