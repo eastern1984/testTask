@@ -38,11 +38,10 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Dish', 'url' => ['/dish/index']],
-            ['label' => 'Ingridients', 'url' => ['/ingridient/index']],
+            !Yii::$app->user->isGuest ? (['label' => 'Dish', 'url' => ['/dish/index']]):(''),
+            !Yii::$app->user->isGuest ? (['label' => 'Ingridients', 'url' => ['/ingridient/index']]):(''),
+
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
