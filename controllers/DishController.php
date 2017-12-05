@@ -135,7 +135,7 @@ class DishController extends Controller
         $resultArr = [];
         $arr = explode(',', $ids);
         foreach ($arr as $id) {
-            $models = Dish::find()->where(['like', 'ingredients', ',' . $id . ','])->all();
+            $models = Dish::find()->where(['like', 'ingredients', ',' . $id . ','])->andWhere(['status' => 1])->all();
             if ($models) {
                 foreach ($models as $model) {
                     if (in_array($model->id, $resultArr)) {
@@ -162,7 +162,7 @@ class DishController extends Controller
             }
         }
 
-        $models = Dish::find()->where(['in', 'id', $dishIds])->all();
+        $models = Dish::find()->where(['in', 'id', $dishIds])->andWhere(['status' => 1])->all();
         if ($models) {
             $result = '';
             foreach ($models as $model) {

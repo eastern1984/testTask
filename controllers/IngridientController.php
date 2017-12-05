@@ -96,8 +96,8 @@ class IngridientController extends Controller
                             $dish->save();
                         }
                         else {
-                            $idArr = explode(',', $dish->ingridients);
-                            $stopIngridients = Ingridient::find()->where(['in', 'id', $idArr])->andWhere(['status' => 0])->all;
+                            $idArr = explode(',', $dish->ingredients);
+                            $stopIngridients = Ingridient::find()->where(['in', 'id', $idArr])->andWhere(['status' => 0])->all();
                             if (!$stopIngridients) {
                                 $dish->status = 1;
                                 $dish->save();
